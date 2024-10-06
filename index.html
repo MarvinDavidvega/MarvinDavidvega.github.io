@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparte tus aperturas de ajedrez</title>
+    <style>
+        body {
+            background-color: #2E3A24;
+            color: #FFD700;
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            border: 2px solid black;
+            padding: 10px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .apertura, .gambito {
+            border: 1px solid yellow;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .register, .login {
+            border: 1px solid yellow;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #4E5D33;
+        }
+        .publicaciones {
+            border: 1px solid yellow;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #4E5D33;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+        .search-bar {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Todo Apertura Ajedrez</h1>
+
+    <div class="section search-bar">
+        <input type="text" placeholder="Buscar apertura o técnica..." id="search">
+        <button onclick="search()">🔍 Buscar</button>
+    </div>
+
+    <div class="section">
+        <h2>Aperturas</h2>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Apertura Española</h3>
+            <p>1.e4 e5 2.Nf3 Nc6 3.Bb5</p>
+            <p><strong>Cómo evitar:</strong> Juega 3...a6 para forzar a las negras a tomar decisiones. Otras respuestas posibles incluyen:</p>
+            <ul>
+                <li><strong>3...Nf6:</strong> Esto desarrolla una pieza y ataca el peón de e4.</li>
+                <li><strong>3...f5:</strong> Esta es la defensa Schliemann, buscando un juego agresivo.</li>
+                <li><strong>3...Bc5:</strong> La Defensa Italiana, buscando control del centro.</li>
+            </ul>
+            <p>Esta apertura es popular por su flexibilidad y por el control que proporciona sobre el centro del tablero.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Apertura Italiana</h3>
+            <p>1.e4 e5 2.Nf3 Nc6 3.Bc4</p>
+            <p><strong>Cómo evitar:</strong> Responde con 3...Bc5, buscando contrarrestar la presión en el centro, o:</p>
+            <ul>
+                <li><strong>3...d6:</strong> Esta jugada solidifica el centro y prepara el desarrollo del alfil.</li>
+                <li><strong>3...Nf6:</strong> Desarrolla una pieza y ataca el peón de e4.</li>
+                <li><strong>3...f5:</strong> Esto puede llevar a la Defensa Peters, buscando un juego activo.</li>
+            </ul>
+            <p>La Apertura Italiana busca un rápido desarrollo y presión sobre el punto f7 del oponente.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Defensa Siciliana</h3>
+            <p>1.e4 c5</p>
+            <p><strong>Cómo evitar:</strong> Juega 2.Nf3 y 3.d4, buscando abrir el centro, o:</p>
+            <ul>
+                <li><strong>2.d4:</strong> Elimina la presión y busca abrir líneas para las piezas.</li>
+                <li><strong>2.c3:</strong> Esta es la variante Alapin, buscando controlar el centro.</li>
+                <li><strong>2.f4:</strong> Con esta jugada, se busca un juego más agresivo con un enfoque en el ataque.</li>
+            </ul>
+            <p>Esta defensa es muy popular entre los jugadores agresivos y permite una rica variedad de juego.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Apertura Francesa</h3>
+            <p>1.e4 e6</p>
+            <p><strong>Cómo evitar:</strong> Juega 2.d4, buscando abrir el centro, o:</p>
+            <ul>
+                <li><strong>2.Nf3:</strong> Esto ayuda a desarrollar las piezas y a controlar el centro.</li>
+                <li><strong>2.d3:</strong> Un enfoque más sólido que evita complicaciones prematuras.</li>
+                <li><strong>2.f4:</strong> Con esta jugada, se busca un juego agresivo y dinámico.</li>
+            </ul>
+            <p>La Apertura Francesa es conocida por su estructura sólida y contragolpeadora.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Defensa Caro-Kann</h3>
+            <p>1.e4 c6</p>
+            <p><strong>Cómo evitar:</strong> Responde con 2.d4, buscando abrir el centro, o:</p>
+            <ul>
+                <li><strong>2.Nc3:</strong> Esto puede llevar a líneas más complicadas.</li>
+                <li><strong>2.f4:</strong> Se busca un juego más agresivo con la intención de controlar el centro.</li>
+                <li><strong>2.d3:</strong> Esta jugada puede llevar a un desarrollo más sólido.</li>
+            </ul>
+            <p>Esta defensa es apreciada por su solidez y por ofrecer oportunidades de contraataque.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Apertura Escocesa</h3>
+            <p>1.e4 e5 2.Nf3 Nc6 3.Bc4</p>
+            <p><strong>Cómo evitar:</strong> Juega 3...d6 para solidificar el centro, o:</p>
+            <ul>
+                <li><strong>3...Nf6:</strong> Desarrolla una pieza y ataca el peón de e4.</li>
+                <li><strong>3...Bc5:</strong> Controla el centro y presiona a la posición blanca.</li>
+                <li><strong>3...f5:</strong> Puede llevar a una línea muy táctica.</li>
+            </ul>
+            <p>La Apertura Escocesa es dinámica y busca un juego activo desde el principio.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Apertura Inglesa</h3>
+            <p>1.c4</p>
+            <p><strong>Cómo evitar:</strong> Responde con 1...e5, buscando el control del centro, o:</p>
+            <ul>
+                <li><strong>1...c5:</strong> Esto transfiere a la Defensa Siciliana.</li>
+                <li><strong>1...Nf6:</strong> Esta jugada controla el centro y prepara el desarrollo de las piezas.</li>
+                <li><strong>1...d5:</strong> Controla el centro y busca igualar el juego.</li>
+            </ul>
+            <p>La Apertura Inglesa es flexible y puede llevar a varias estructuras diferentes.</p>
+        </div>
+        <div class="apertura">
+            <h3><span class="icon">📚</span>Defensa Pirc</h3>
+            <p>1.e4 d6</p>
+            <p><strong>Cómo evitar:</strong> Juega 2.d4 para abrir el centro, o:</p>
+            <ul>
+                <li><strong>2.Nf3:</strong> Desarrolla una pieza y mantiene la presión.</li>
+                <li><strong>2.f4:</strong> Busca un juego más agresivo.</li>
+                <li><strong>2.c4:</strong> Esto puede transponer a otras aperturas.</li>
+            </ul>
+            <p>La Defensa Pirc permite un juego flexible y dinámico.</p> <!DOCTYPE html>
+            <html lang="es">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Aperturas de Ajedrez</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                        padding: 20px;
+                        border: 1px solid #ccc;
+                    }
+                    #publications {
+                        margin-top: 20px;
+                    }
+                    .publication {
+                        border: 1px solid #ccc;
+                        margin: 10px 0;
+                        padding: 10px;
+                        border-radius: 5px;
+                    }
+                </style>
+            </head>
+            <body>
+                <h1>Aperturas de Ajedrez</h1>
+                
+                <h2>Hacer una publicación de tu apertura</h2>
+                <form id="publicationForm">
+                    <textarea id="publicationText" rows="4" cols="50" placeholder="Escribe tu apertura aquí..."></textarea><br>
+                    <button type="submit">Publicar</button>
+                </form>
+            
+                <div id="publications">
+                    <h2>Publicaciones</h2>
+                    <div id="publicationList"></div>
+                </div>
+            
+                <script>
+                    document.getElementById('publicationForm').addEventListener('submit', function(event) {
+                        event.preventDefault(); // Evita el envío del formulario
+            
+                        // Obtén el texto de la publicación
+                        const publicationText = document.getElementById('publicationText').value;
+            
+                        // Verifica que el campo no esté vacío
+                        if (publicationText.trim() !== '') {
+                            // Crea un nuevo elemento para la publicación
+                            const publicationDiv = document.createElement('div');
+                            publicationDiv.className = 'publication';
+                            publicationDiv.innerText = publicationText;
+            
+                            // Agrega la nueva publicación a la lista
+                            document.getElementById('publicationList').appendChild(publicationDiv);
+            
+                            // Limpia el campo de texto
+                            document.getElementById('publicationText').value = '';
+                        } else {
+                            alert('Por favor, escribe algo antes de publicar.');
+                        }
+                    });
+                </script>
+            </body>
+            </html>
+            
+        </div>
+    </div>
+</body>
+</html>
