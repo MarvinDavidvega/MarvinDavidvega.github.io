@@ -685,7 +685,56 @@
                     board.position(game.fen());
                 } else {
                     return 'snapback'; // mover pieza de vuelta a la posición original
+        {<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Ajedrez Interactivo</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
+    <style>
+        #board {
+            width: 400px; /* Cambia el tamaño según lo necesites */
+            margin: 20px auto;
+        }
+        #board .square-55d63 {
+            background: #eee;
+        }
+        #board .square-55d63:nth-child(odd) {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tablero de Ajedrez Interactivo</h1>
+    <div id="board"></div>
+    <p>Este código es parte del proyecto de <a href="https://lichess.org">Lichess.org</a>. Se otorgan créditos a los desarrolladores de Lichess.</p>
+    
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
+    <script>
+        var board = ChessBoard('board', {
+            draggable: true,
+            position: 'start',
+            onDragStart: function (source, piece, position, orientation) {
+                // Permitir solo el movimiento de las piezas del jugador
+                if (piece.search('b') !== -1) return false; // bloquear piezas negras
+            },
+            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
+                // Verificar si el movimiento es legal
+                if (game.move({from: source, to: target, promotion: 'q'})) {
+                    board.position(game.fen());
+                } else {
+                    return 'snapback'; // mover pieza de vuelta a la posición original
                 }
+            }
+        });
+
+        // Interacción directa sin botones, se inicia el tablero directamente
+        board.position('start'); // Muestra el tablero con las piezas en su posición inicial
+    </script>
+</body>
+</html>
+
             }
         });
 
