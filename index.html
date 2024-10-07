@@ -643,7 +643,58 @@
         document.getElementById('loadBoard').onclick = function () {
             document.getElementById('board').style.display = 'block';
             board.start();
-        };
+        }; <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Ajedrez</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
+    <style>
+        #board {
+            width: 400px;
+            margin: 20px auto;
+        }
+        #board .square-55d63 {
+            background: #eee;
+        }
+        #board .square-55d63:nth-child(odd) {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tablero de Ajedrez</h1>
+    <div id="board" style="width: 400px"></div>
+    <button id="startBtn">Inicio</button>
+    <button id="clearBtn">Limpiar</button>
+    <p>Este código es parte del proyecto de <a href="https://lichess.org">Lichess.org</a>. Se otorgan créditos a los desarrolladores de Lichess.</p>
+    
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
+    <script>
+        var board = ChessBoard('board', {
+            draggable: true,
+            position: 'start',
+            onDragStart: function (source, piece, position, orientation) {
+                // Permitir solo el movimiento de las piezas del jugador
+                if (piece.search('w') !== -1) return false; // bloquear piezas blancas
+            },
+            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
+                // Verificar si el movimiento es legal
+                if (game.move({from: source, to: target, promotion: 'q'})) {
+                    board.position(game.fen());
+                } else {
+                    return 'snapback'; // mover pieza de vuelta a la posición original
+                }
+            }
+        });
+
+        document.getElementById('startBtn').addEventListener('click', board.start);
+        document.getElementById('clearBtn').addEventListener('click', board.clear);
+    </script>
+</body>
+</html>
+
     </script>
 </body>
 </html>
