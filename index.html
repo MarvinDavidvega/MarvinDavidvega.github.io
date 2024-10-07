@@ -663,135 +663,7 @@
         }
     </style>
 </head>
-<body>
-    <h1>Tablero de Ajedrez</h1>
-    <div id="board" style="width: 400px"></div>
-    <button id="startBtn">Inicio</button>
-    <button id="clearBtn">Limpiar</button>
-    <p>Este código es parte del proyecto de <a href="https://lichess.org">Lichess.org</a>. Se otorgan créditos a los desarrolladores de Lichess.</p>
-    
-    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
-    <script>
-        var board = ChessBoard('board', {
-            draggable: true,
-            position: 'start',
-            onDragStart: function (source, piece, position, orientation) {
-                // Permitir solo el movimiento de las piezas del jugador
-                if (piece.search('w') !== -1) return false; // bloquear piezas blancas
-            },
-            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
-                // Verificar si el movimiento es legal
-                if (game.move({from: source, to: target, promotion: 'q'})) {
-                    board.position(game.fen());
-                } else {
-                    return 'snapback'; // mover pieza de vuelta a la posición original
-        {<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Ajedrez Interactivo</title>
-    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
-    <style>
-        #board {
-            width: 400px; /* Cambia el tamaño según lo necesites */
-            margin: 20px auto;
-        }
-        #board .square-55d63 {
-            background: #eee;
-        }
-        #board .square-55d63:nth-child(odd) {
-            background: #ddd;
-        }
-    </style>
-</head>
-<body>
-    <h1>Tablero de Ajedrez Interactivo</h1>
-    <div id="board"></div>
-    <p>Este código es parte del proyecto de <a href="https://lichess.org">Lichess.org</a>. Se otorgan créditos a los desarrolladores de Lichess.</p>
-    
-    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
-    <script>
-        var board = ChessBoard('board', {
-            draggable: true,
-            position: 'start',
-            onDragStart: function (source, piece, position, orientation) {
-                // Permitir solo el movimiento de las piezas del jugador
-                if (piece.search('b') !== -1) return false; // bloquear piezas negras
-            },
-            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
-                // Verificar si el movimiento es legal
-                if (game.move({from: source, to: target, promotion: 'q'})) {
-                    board.position(game.fen());
-                } else {
-                    return 'snapback'; // mover pieza de vuelta a la posición original
-                }
-            }
-        });
-
-        // Interacción directa sin botones, se inicia el tablero directamente
-        board.position('start'); // Muestra el tablero con las piezas en su posición inicial
-    </script> <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tablero de Ajedrez Interactivo</title>
-    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css" />
-    <style>
-        #board {
-            width: 400px; /* Cambia el tamaño según lo necesites */
-            margin: 20px auto;
-        }
-        .square-55d63 {
-            width: 50px; /* Cambia el tamaño de cada casilla */
-            height: 50px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Tablero de Ajedrez Interactivo</h1>
-    <div id="board"></div>
-    <p>Este código es parte del proyecto de <a href="https://lichess.org">Lichess.org</a>. Se otorgan créditos a los desarrolladores de Lichess.</p>
-    
-    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
-    <script>
-        // Inicializar el tablero de ajedrez
-        var board = ChessBoard('board', {
-            draggable: true,
-            position: 'start',
-            onDragStart: function (source, piece, position, orientation) {
-                // Permitir solo el movimiento de las piezas blancas
-                if (piece.search('b') !== -1) return false; // bloquear piezas negras
-            },
-            onDrop: function (source, target, piece, newPos, oldPos, orientation) {
-                // Verificar si el movimiento es legal
-                if (game.move({from: source, to: target, promotion: 'q'})) {
-                    board.position(game.fen());
-                } else {
-                    return 'snapback'; // mover pieza de vuelta a la posición original
-                }
-            }
-        });
-
-        // Mostrar el tablero con las piezas en su posición inicial
-        board.position('start'); 
-    </script>
-</body>
-</html>
-
-</body>
-</html>
-
-            }
-        });
-
-        document.getElementById('startBtn').addEventListener('click', board.start);
-        document.getElementById('clearBtn').addEventListener('click', board.clear);
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
+<body> <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -834,9 +706,83 @@
 
         $('#startBtn').on('click', board1.start);
         $('#clearBtn').on('click', board1.clear);
-    </script>
+    </script> <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Ajedrez Interactivo</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <style>
+        #board {
+            width: 400px; /* Tamaño del tablero */
+            margin: 20px auto; /* Centrar el tablero */
+        }
+    </style>
+    <style>
+        .chessboard img {
+            width: 100%; /* Las imágenes de las piezas ocuparán el 100% de su celda */
+            height: auto; /* Mantiene la proporción de las imágenes */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tablero de Ajedrez Interactivo</h1>
+    <div id="board" style="width: 400px"></div>
+    <button id="startBtn">Empezar</button>
+    <button id="clearBtn">Limpiar</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script>
+        // Configuración de imágenes para las piezas
+        const pieceSet = {
+            w: {
+                p: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Chess_pawn_white.svg/100px-Chess_pawn_white.svg.png',
+                r: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Chess_rook_white.svg/100px-Chess_rook_white.svg.png',
+                n: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chess_knight_white.svg/100px-Chess_knight_white.svg.png',
+                b: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Chess_bishop_white.svg/100px-Chess_bishop_white.svg.png',
+                q: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Chess_queen_white.svg/100px-Chess_queen_white.svg.png',
+                k: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chess_king_white.svg/100px-Chess_king_white.svg.png'
+            },
+            b: {
+                p: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pawn_black.svg/100px-Chess_pawn_black.svg.png',
+                r: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Chess_rook_black.svg/100px-Chess_rook_black.svg.png',
+                n: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Chess_knight_black.svg/100px-Chess_knight_black.svg.png',
+                b: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Chess_bishop_black.svg/100px-Chess_bishop_black.svg.png',
+                q: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Chess_queen_black.svg/100px-Chess_queen_black.svg.png',
+                k: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Chess_king_black.svg/100px-Chess_king_black.svg.png'
+            }
+        };
+
+        var board1 = ChessBoard('board', {
+            draggable: true,
+            position: 'start',
+            pieceTheme: pieceSet, // Se usa el conjunto de imágenes para las piezas
+            onDragStart: function (source, piece, position, orientation) {
+                // Evita que se muevan piezas de un color que no es el jugador
+                if ((piece.search('b') !== -1 && orientation === 'white') || (piece.search('w') !== -1 && orientation === 'black')) {
+                    return false;
+                }
+            },
+            onDrop: function (source, target) {
+                // Aquí puedes añadir lógica para validar el movimiento
+            },
+            onSnapEnd: function () {
+                // Esto se ejecuta al terminar el movimiento
+                board1.position(board1.fen());
+            }
+        });
+
+        $('#startBtn').on('click', board1.start);
+        $('#clearBtn').on('click', 
+
     <footer>
         <p>Este código es propiedad de <a href="https://lichess.org" target="_blank">lichess.org</a>. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
+  <p>Este código es propiedad de <a href="https://lichess.org" target="_blank">lichess.org</a>. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
