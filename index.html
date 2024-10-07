@@ -791,6 +791,55 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablero de Ajedrez Interactivo</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <style>
+        #board {
+            width: 400px; /* Tamaño del tablero */
+            margin: 20px auto; /* Centrar el tablero */
+        }
+    </style>
+</head>
+<body>
+    <h1>Tablero de Ajedrez Interactivo</h1>
+    <div id="board" style="width: 400px"></div>
+    <button id="startBtn">Empezar</button>
+    <button id="clearBtn">Limpiar</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script>
+        var board1 = ChessBoard('board', {
+            draggable: true,
+            position: 'start',
+            onDragStart: function (source, piece, position, orientation) {
+                // Evita que se muevan piezas de un color que no es el jugador
+                if ((piece.search('b') !== -1 && orientation === 'white') || (piece.search('w') !== -1 && orientation === 'black')) {
+                    return false;
+                }
+            },
+            onDrop: function (source, target) {
+                // Aquí puedes añadir lógica para validar el movimiento
+            },
+            onSnapEnd: function () {
+                // Esto se ejecuta al terminar el movimiento
+                board1.position(board1.fen());
+            }
+        });
+
+        $('#startBtn').on('click', board1.start);
+        $('#clearBtn').on('click', board1.clear);
+    </script>
+    <footer>
+        <p>Este código es propiedad de <a href="https://lichess.org" target="_blank">lichess.org</a>. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
 
     </script>
 </body>
