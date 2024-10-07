@@ -140,6 +140,145 @@
     </select>
     <button id="loadBoard">Cargar Tablero</button>
     <div id="openingInfo"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aperturas de Ajedrez</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        #board {
+            margin: 20px auto;
+            border: 1px solid #333;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            font-size: 16px;
+        }
+        .apertura {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .apertura h3 {
+            color: #2980b9;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aperturas de Ajedrez 📚</h1>
+    <div id="board"></div>
+    <select id="openingSelect">
+        <option value="">Selecciona una apertura</option>
+    </select>
+    <button id="loadBoard">Cargar Tablero</button>
+    <div id="openingInfo"></div>
+
+    <div class="apertura">
+        <h3>Defensa Siciliana 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Siciliana es una de las aperturas más populares y agresivas. Se inicia con 1.e4 c5. Esta apertura permite a las negras crear un juego desequilibrado y buscar contrajuego, lo que la hace una opción favorita entre los jugadores que prefieren el juego táctico. La Siciliana tiene muchas variantes, incluyendo la Variante Najdorf, la Variante Scheveningen y la Variante del Dragón, cada una ofreciendo diferentes posibilidades estratégicas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura Española 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Española (1.e4 e5 2.Nf3 Nc6 3.Bb5) es una de las más antiguas y reconocidas, favorecida por muchos campeones. Esta apertura busca presionar el punto f7 de las negras, lo que puede llevar a un juego estratégico profundo. Existen múltiples variantes, como la Defensa Morphy, la Defensa Berlín y la Defensa del Cambio, cada una con su propio carácter y estilo de juego.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Francesa 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Francesa (1.e4 e6) es conocida por su solidez y ha sido usada por muchos campeones. Este sistema permite a las negras establecer un sólido centro de peones y buscar contrajuego en el flanco de rey. Las principales líneas incluyen la Variante del Avance, la Variante del Cambio y la Variante Tarrasch.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Caro-Kann 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Caro-Kann (1.e4 c6) es una apertura sólida y popular entre los jugadores. Esta defensa busca un desarrollo armonioso de las piezas y una estructura de peones fuerte. Las principales variantes incluyen la Variante Clásica, la Variante Avance y la Variante Tartakower.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura Italiana 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Italiana (1.e4 e5 2.Nf3 Nc6 3.Bc4) es una apertura clásica y estratégica. A menudo conduce a un juego abierto, donde ambos bandos buscan oportunidades tácticas. Variantes populares incluyen la Giuoco Piano y la Defensa de dos Caballos.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Nimzo-India 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Nimzo-India (1.d4 Nf6 2.c4 e6 3.Nc3 Bb4) es muy popular en el ajedrez moderno. Esta defensa permite a las negras controlar el centro y crear complicaciones en la estructura de peones de las blancas. Las ideas estratégicas suelen involucrar el intercambio del alfil en c3 para debilitar la estructura de peones de las blancas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura Inglesa 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Inglesa (1.c4) es conocida por su flexibilidad y opciones estratégicas. Permite a las blancas controlar el centro con un enfoque más posicional y puede transponer a otras aperturas. Las negras pueden optar por varias configuraciones, lo que lleva a un juego rico y complejo.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Grünfeld 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Grünfeld (1.d4 Nf6 2.c4 g6 3.Nc3 d5) es muy dinámica y popular. Esta apertura busca un juego activo y agresivo, desafiando a las blancas a establecer su centro de peones. Se asocia con posiciones tácticas y estratégicas muy complejas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Moderna 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Moderna (1.e4 g6) es flexible y permite al jugador desarrollar sus piezas según las circunstancias. Este enfoque ofrece a las negras la oportunidad de crear un contrajuego en el centro y en los flancos, manteniendo una postura sólida y flexible.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura del Youtuber Hikaru Nakamura 📖</h3>
+        <p><strong>Descripción:</strong> Hikaru suele jugar aperturas rápidas y agresivas, comenzando con 1.e4, buscando un juego táctico y emocionante. Su estilo se centra en la presión constante sobre su oponente, combinando creatividad y agresividad.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura del Youtuber GothamChess 📖</h3>
+        <p><strong>Descripción:</strong> Levy, conocido como GothamChess, utiliza la Defensa Siciliana en sus videos, comenzando con 1.e4 c5. Su enfoque combina teoría con análisis de partidas, lo que lo hace accesible para jugadores de todos los niveles.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura del Youtuber Agadmator 📖</h3>
+        <p><strong>Descripción:</strong> Agadmator es conocido por sus análisis de partidas y juega diversas aperturas, incluyendo la Apertura Española. Su estilo didáctico hace que el ajedrez sea comprensible y atractivo para todos.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Pirc 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Pirc (1.e4 d6) es una apertura que permite a las negras jugar de forma flexible y contrarrestar las ideas blancas. Suele conducir a un juego dinámico con muchas posibilidades estratégicas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Apertura Benoni 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Benoni (1.d4 Nf6 2.c4 c5) es agresiva y da a las negras un juego activo. Se caracteriza por la lucha en el centro y el flanco de la dama, llevando a posiciones complejas y tácticas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Holandesa 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Holandesa (1.d4 f5) es una apertura poco convencional pero efectiva, buscando un juego activo desde el principio. Este sistema permite a las negras establecer una sólida presencia en el centro y atacar las debilidades de las blancas.</p>
+    </div>
+
+    <div class="apertura">
+        <h3>Defensa Escandinava 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa
 
     <div class="apertura">
         <h3>Defensa Siciliana 📖</h3>
