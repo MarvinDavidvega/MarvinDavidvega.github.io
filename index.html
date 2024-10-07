@@ -80,6 +80,59 @@
     </style>
 </head>
 <body>
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aperturas de Ajedrez</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        #board {
+            margin: 20px auto;
+            border: 1px solid #333;
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            font-size: 16px;
+        }
+        .apertura {
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            max-width: 600px;
+        }
+        .apertura h3 {
+            color: #2980b9;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
     <h1>Aperturas de Ajedrez 📚</h1>
     <div id="board"></div>
     <select id="openingSelect">
@@ -88,188 +141,97 @@
     <button id="loadBoard">Cargar Tablero</button>
     <div id="openingInfo"></div>
 
-    <script>
-        const openings = [
-            {
-                name: 'Defensa Siciliana',
-                position: 'rnbqkb1r/pppppppp/8/8/2P5/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/sicilian-defense.png',
-                description: `La Defensa Siciliana es una de las aperturas más populares y agresivas. Se inicia con 1.e4 c5. 
-                Las piezas clave son el peón de c5 y el alfil de f8. Pros: permite un juego dinámico y contrarresta la iniciativa blanca. Contras: puede llevar a posiciones complicadas si no se conoce bien.`
-            },
-            {
-                name: 'Apertura Española',
-                position: 'rnbqkb1r/pppppppp/8/8/1P6/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/spanish-opening.png',
-                description: `La Apertura Española (1.e4 e5 2.Nf3 Nc6 3.Bb5) es una de las más antiguas y reconocidas, favorecida por muchos campeones. 
-                Las piezas clave son el alfil de b5 y el caballo de c6. Pros: ayuda a controlar el centro y permite un desarrollo rápido. Contras: puede dar lugar a posiciones cerradas.`
-            },
-            {
-                name: 'Defensa Francesa',
-                position: 'rnbqkb1r/pppppppp/8/8/2P5/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/french-defense.png',
-                description: `La Defensa Francesa (1.e4 e6) es conocida por su solidez y ha sido usada por muchos campeones. 
-                Las piezas clave son el peón de e6 y el alfil de c8. Pros: permite una estructura de peones sólida y defensiva. Contras: puede resultar pasiva si se juega de manera inadecuada.`
-            },
-            {
-                name: 'Defensa Caro-Kann',
-                position: 'rnbqkb1r/pppppppp/8/8/2P5/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/caro-kann-defense.png',
-                description: `La Defensa Caro-Kann (1.e4 c6) es una apertura sólida y popular entre los jugadores. 
-                Las piezas clave son el peón de c6 y el caballo de d7. Pros: ofrece una defensa sólida contra 1.e4. Contras: puede dar lugar a posiciones estáticas.`
-            },
-            {
-                name: 'Apertura Italiana',
-                position: 'rnbqkb1r/pppppppp/8/8/1P6/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/italian-opening.png',
-                description: `La Apertura Italiana (1.e4 e5 2.Nf3 Nc6 3.Bc4) es una apertura clásica y estratégica. 
-                Las piezas clave son el alfil de c4 y el peón de e5. Pros: permite un desarrollo rápido y ataque al f7. Contras: puede ser vulnerable a defensas bien preparadas.`
-            },
-            {
-                name: 'Defensa Nimzo-India',
-                position: 'rnbqkb1r/pppppppp/8/8/1P6/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/nimzo-indian-defense.png',
-                description: `La Defensa Nimzo-India (1.d4 Nf6 2.c4 e6 3.Nc3 Bb4) es muy popular en el ajedrez moderno. 
-                Las piezas clave son el caballo de c3 y el alfil de b4. Pros: ofrece un juego dinámico y la opción de dobles peones. Contras: puede ser compleja de manejar para principiantes.`
-            },
-            {
-                name: 'Apertura Inglesa',
-                position: 'rnbqkb1r/pppppppp/8/8/2P5/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/english-opening.png',
-                description: `La Apertura Inglesa (1.c4) es conocida por su flexibilidad y opciones estratégicas. 
-                Las piezas clave son el peón de c4 y el alfil de f1. Pros: permite un control central gradual. Contras: puede ser lenta si no se tiene cuidado.`
-            },
-            {
-                name: 'Defensa Grünfeld',
-                position: 'rnbqkb1r/pppppppp/8/8/1P6/P7/1P6/RNBQKBNR',
-                image: 'https://example.com/grunfeld-defense.png',
-                description: `La Defensa Grünfeld (1.d4 Nf6 2.c4 g6 3.Nc3 d5) es muy dinámica y popular. 
-                Las piezas clave son el peón de d5 y los caballos. Pros: ofrece juegos tacticos y de contraataque. Contras: puede ser lenta si no se tiene cuidado
-<div class="apertura">
-    <h3>Apertura del Youtuber Hikaru Nakamura 📖</h3>
-    <p><strong>Descripción:</strong> Hikaru suele jugar aperturas rápidas y agresivas, comenzando con 1.e4, buscando un juego táctico y emocionante.</p>
-    <p><strong>Piezas clave:</strong> Peón en e4, Caballo en f3.</p>
-    <p><strong>Pros:</strong> Atrae a los oponentes a situaciones complejas rápidamente.</p>
-    <p><strong>Contras:</strong> Puede llevar a errores si no se está familiarizado con las líneas.</p>
-</div>
+    <div class="apertura">
+        <h3>Defensa Siciliana 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Siciliana es una de las aperturas más populares y agresivas. Se inicia con 1.e4 c5.</p>
+        <p><strong>Piezas clave:</strong> Peón en c5 y Alfil de f8.</p>
+        <p><strong>Pros:</strong> Permite un juego dinámico y contrarresta la iniciativa blanca.</p>
+        <p><strong>Contras:</strong> Puede llevar a posiciones complicadas si no se conoce bien.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber GothamChess 📖</h3>
-    <p><strong>Descripción:</strong> Levy, conocido como GothamChess, utiliza la Defensa Siciliana en sus videos, comenzando con 1.e4 c5.</p>
-    <p><strong>Piezas clave:</strong> Peón en c5, Caballo en f6.</p>
-    <p><strong>Pros:</strong> Fomenta un juego agresivo y táctico.</p>
-    <p><strong>Contras:</strong> Puede ser arriesgada si no se conoce bien la teoría.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura Española 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Española (1.e4 e5 2.Nf3 Nc6 3.Bb5) es una de las más antiguas y reconocidas, favorecida por muchos campeones.</p>
+        <p><strong>Piezas clave:</strong> Alfil de b5 y Caballo de c6.</p>
+        <p><strong>Pros:</strong> Ayuda a controlar el centro y permite un desarrollo rápido.</p>
+        <p><strong>Contras:</strong> Puede dar lugar a posiciones cerradas.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber Agadmator 📖</h3>
-    <p><strong>Descripción:</strong> Agadmator a menudo muestra la Defensa Francesa, comenzando con 1.e4 e6, destacando su solidez.</p>
-    <p><strong>Piezas clave:</strong> Peón en e6, Alfil en c8.</p>
-    <p><strong>Pros:</strong> Permite una sólida defensa contra 1.e4.</p>
-    <p><strong>Contras:</strong> Puede ser un poco pasiva si no se juega activamente.</p>
-</div>
+    <div class="apertura">
+        <h3>Defensa Francesa 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Francesa (1.e4 e6) es conocida por su solidez y ha sido usada por muchos campeones.</p>
+        <p><strong>Piezas clave:</strong> Peón de e6 y Alfil de c8.</p>
+        <p><strong>Pros:</strong> Permite una estructura de peones sólida y defensiva.</p>
+        <p><strong>Contras:</strong> Puede resultar pasiva si se juega de manera inadecuada.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber thechesswebsite 📖</h3>
-    <p><strong>Descripción:</strong> Este canal se centra en la Apertura Española, comenzando con 1.e4 e5 2.Nf3 Nc6 3.Bb5, ideal para jugadores intermedios.</p>
-    <p><strong>Piezas clave:</strong> Alfil en b5, Caballo en c6.</p>
-    <p><strong>Pros:</strong> Desarrollo rápido y presión sobre el peón en e5.</p>
-    <p><strong>Contras:</strong> Puede llevar a posiciones teóricas conocidas.</p>
-</div>
+    <div class="apertura">
+        <h3>Defensa Caro-Kann 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Caro-Kann (1.e4 c6) es una apertura sólida y popular entre los jugadores.</p>
+        <p><strong>Piezas clave:</strong> Peón de c6 y Caballo de d7.</p>
+        <p><strong>Pros:</strong> Ofrece una defensa sólida contra 1.e4.</p>
+        <p><strong>Contras:</strong> Puede dar lugar a posiciones estáticas.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber Chess.com 📖</h3>
-    <p><strong>Descripción:</strong> Chess.com presenta a menudo la Defensa Nimzo-India, comenzando con 1.d4 Nf6 2.c4 e6 3.Nc3 Bb4.</p>
-    <p><strong>Piezas clave:</strong> Alfil en b4, Caballo en c3.</p>
-    <p><strong>Pros:</strong> Gran flexibilidad y oportunidades tácticas.</p>
-    <p><strong>Contras:</strong> Requiere un buen conocimiento de la teoría.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura Italiana 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Italiana (1.e4 e5 2.Nf3 Nc6 3.Bc4) es una apertura clásica y estratégica.</p>
+        <p><strong>Piezas clave:</strong> Alfil de c4 y Peón de e5.</p>
+        <p><strong>Pros:</strong> Permite un desarrollo rápido y ataque al f7.</p>
+        <p><strong>Contras:</strong> Puede ser vulnerable a defensas bien preparadas.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber Eric Rosen 📖</h3>
-    <p><strong>Descripción:</strong> Eric frecuentemente utiliza la Defensa Caro-Kann, comenzando con 1.e4 c6, buscando una sólida estructura.</p>
-    <p><strong>Piezas clave:</strong> Peón en c6, Caballo en f6.</p>
-    <p><strong>Pros:</strong> Estilo defensivo y buena solidez.</p>
-    <p><strong>Contras:</strong> Puede ser un poco pasiva si no se aprovecha la iniciativa.</p>
-</div>
+    <div class="apertura">
+        <h3>Defensa Nimzo-India 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Nimzo-India (1.d4 Nf6 2.c4 e6 3.Nc3 Bb4) es muy popular en el ajedrez moderno.</p>
+        <p><strong>Piezas clave:</strong> Caballo de c3 y Alfil de b4.</p>
+        <p><strong>Pros:</strong> Ofrece un juego dinámico y la opción de dobles peones.</p>
+        <p><strong>Contras:</strong> Puede ser compleja de manejar para principiantes.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber Nacho Ajedrez 📖</h3>
-    <p><strong>Descripción:</strong> Nacho suele jugar la Apertura Italiana, comenzando con 1.e4 e5 2.Nf3 Nc6 3.Bc4.</p>
-    <p><strong>Piezas clave:</strong> Alfil en c4, Caballo en f3.</p>
-    <p><strong>Pros:</strong> Permite un juego rápido y dinámico.</p>
-    <p><strong>Contras:</strong> Puede llevar a posiciones conocidas y teóricas.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura Inglesa 📖</h3>
+        <p><strong>Descripción:</strong> La Apertura Inglesa (1.c4) es conocida por su flexibilidad y opciones estratégicas.</p>
+        <p><strong>Piezas clave:</strong> Peón de c4 y Alfil de f1.</p>
+        <p><strong>Pros:</strong> Permite un control central gradual.</p>
+        <p><strong>Contras:</strong> Puede ser lenta si no se tiene cuidado.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura del Youtuber Piedad Ajedrez 📖</h3>
-    <p><strong>Descripción:</strong> Piedad Ajedrez promueve la Defensa Grünfeld, comenzando con 1.d4 Nf6 2.c4 g6 3.Nc3 d5.</p>
-    <p><strong>Piezas clave:</strong> Peón en d5, Caballos en c3.</p>
-    <p><strong>Pros:</strong> Oportunidades de contraataque y tácticas complejas.</p>
-    <p><strong>Contras:</strong> Puede ser arriesgada si no se conoce bien la línea.</p>
-</div>
+    <div class="apertura">
+        <h3>Defensa Grünfeld 📖</h3>
+        <p><strong>Descripción:</strong> La Defensa Grünfeld (1.d4 Nf6 2.c4 g6 3.Nc3 d5) es muy dinámica y popular.</p>
+        <p><strong>Piezas clave:</strong> Peón de d5 y los caballos.</p>
+        <p><strong>Pros:</strong> Ofrece juegos tácticos y de contraataque.</p>
+        <p><strong>Contras:</strong> Puede ser arriesgada si no se conoce bien la línea.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura Moderna 📖</h3>
-    <img src="URL_DE_IMAGEN_MODERNA" alt="Apertura Moderna" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> La Apertura Moderna comienza con 1.e4 g6, permitiendo a las negras desarrollar su juego de manera flexible.</p>
-    <p><strong>Piezas clave:</strong> Peón en g6, Alfil en g7.</p>
-    <p><strong>Pros:</strong> Ofrece un juego dinámico y muchas oportunidades tácticas.</p>
-    <p><strong>Contras:</strong> Puede dar ventajas al blanco si no se maneja adecuadamente.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura del Youtuber Hikaru Nakamura 📖</h3>
+        <p><strong>Descripción:</strong> Hikaru suele jugar aperturas rápidas y agresivas, comenzando con 1.e4, buscando un juego táctico y emocionante.</p>
+        <p><strong>Piezas clave:</strong> Peón en e4, Caballo en f3.</p>
+        <p><strong>Pros:</strong> Atrae a los oponentes a situaciones complejas rápidamente.</p>
+        <p><strong>Contras:</strong> Puede llevar a errores si no se está familiarizado con las líneas.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura Italiana 📖</h3>
-    <img src="URL_DE_IMAGEN_ITALIANA" alt="Apertura Italiana" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> La Apertura Italiana comienza con 1.e4 e5 2.Nf3 Nc6 3.Bc4, buscando un rápido desarrollo de piezas.</p>
-    <p><strong>Piezas clave:</strong> Alfil en c4, Peón en e4.</p>
-    <p><strong>Pros:</strong> Permite un ataque rápido y directo al rey enemigo.</p>
-    <p><strong>Contras:</strong> Puede ser fácilmente contrarrestada por un buen juego defensivo negro.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura del Youtuber GothamChess 📖</h3>
+        <p><strong>Descripción:</strong> Levy, conocido como GothamChess, utiliza la Defensa Siciliana en sus videos, comenzando con 1.e4 c5.</p>
+        <p><strong>Piezas clave:</strong> Peón en c5, Caballo en f6.</p>
+        <p><strong>Pros:</strong> Fomenta un juego agresivo y táctico.</p>
+        <p><strong>Contras:</strong> Puede ser arriesgada si no se conoce bien la teoría.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura Escandinava 📖</h3>
-    <img src="URL_DE_IMAGEN_ESCANDINAVA" alt="Apertura Escandinava" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> Comienza con 1.e4 d5, buscando una lucha directa por el control del centro.</p>
-    <p><strong>Piezas clave:</strong> Peón en d5, Caballo en f6.</p>
-    <p><strong>Pros:</strong> Permite un juego agresivo y activo desde el inicio.</p>
-    <p><strong>Contras:</strong> Puede llevar a un desarrollo desfavorable si no se maneja bien.</p>
-</div>
+    <div class="apertura">
+        <h3>Apertura del Youtuber Agadmator 📖</h3>
+        <p><strong>Descripción:</strong> Agadmator a menudo muestra la Defensa Francesa, comenzando con 1.e4 e6, destacando su solidez.</p>
+        <p><strong>Piezas clave:</strong> Peón en e6, Alfil en c8.</p>
+        <p><strong>Pros:</strong> Permite una sólida defensa contra 1.e4.</p>
+        <p><strong>Contras:</strong> Puede ser un poco pasiva si no se juega activamente.</p>
+    </div>
 
-<div class="apertura">
-    <h3>Apertura Alfil de los Dos Caballos 📖</h3>
-    <img src="URL_DE_IMAGEN_ALFIL_DOS_CABALLOS" alt="Apertura Alfil de los Dos Caballos" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> Esta apertura comienza con 1.e4 e5 2.Nf3 Nc6 3.Bc4 Nf6, ofreciendo un desarrollo activo de las piezas.</p>
-    <p><strong>Piezas clave:</strong> Alfil en c4, Caballos en f3 y c6.</p>
-    <p><strong>Pros:</strong> Genera muchas posibilidades tácticas y de ataque.</p>
-    <p><strong>Contras:</strong> Puede ser vulnerable a un ataque rápido si no se juega correctamente.</p>
-</div>
+    <div class="apertura">
+        <h3
 
-<div class="apertura">
-    <h3>Apertura de Peón Dama Chigorin 📖</h3>
-    <img src="URL_DE_IMAGEN_CHIGORIN" alt="Apertura de Peón Dama Chigorin" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> Se inicia con 1.d4 d5 2.c4 Nc6, buscando una posición activa para las negras.</p>
-    <p><strong>Piezas clave:</strong> Caballo en c6, Peón en d5.</p>
-    <p><strong>Pros:</strong> Permite una buena actividad de piezas para el negro.</p>
-    <p><strong>Contras:</strong> Puede ser arriesgada si el blanco se desarrolla adecuadamente.</p>
-</div>
-
-<div class="apertura">
-    <h3>Apertura Alfil Gambito 📖</h3>
-    <img src="URL_DE_IMAGEN_ALFIL_GAMBITO" alt="Apertura Alfil Gambito" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> Esta apertura se caracteriza por el sacrificio de un peón en 1.e4 e5 2.Bc4, buscando un ataque rápido al rey.</p>
-    <p><strong>Piezas clave:</strong> Alfil en c4, Peón en e4.</p>
-    <p><strong>Pros:</strong> Genera una fuerte presión sobre la posición negra.</p>
-    <p><strong>Contras:</strong> Puede ser arriesgada si no se ejecuta con precisión.</p>
-</div>
-
-<div class="apertura">
-    <h3>Apertura Giuoco Piano 📖</h3>
-    <img src="URL_DE_IMAGEN_GIUCO_PIANO" alt="Apertura Giuoco Piano" style="width: 100%; max-width: 400px;"/>
-    <p><strong>Descripción:</strong> Comienza con 1.e4 e5 2.Nf3 Nc6 3.Bc4 Bc5, buscando un juego abierto y táctico.</p>
-    <p><strong>Piezas clave:</strong> Alfiles en c4 y c5, Peón en e5.</p>
-    <p><strong>Pros:</strong> Ofrece un desarrollo rápido de piezas y oportunidades tácticas.</p>
-    <p><strong>Contras:</strong> Puede ser difícil mantener la iniciativa si no se juega con cuidado.</p>
 </div>
 
                 <meta charset="UTF-8">
@@ -503,7 +465,50 @@
         const aperturasDiv = document.getElementById('aperturasPublicadas');
         
         if (descripcion.trim() !== '') {
-         
+         <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aperturas de Ajedrez</title>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.css">
+    <style>
+        #board {
+            width: 400px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Aperturas de Ajedrez 📚</h1>
+
+    <button id="loadBoard">Cargar Tablero</button>
+    <div id="board" style="display:none;"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.js"></script>
+    <script>
+        var board = ChessBoard('board', {
+            draggable: true,
+            position: 'start',
+            onDragStart: function (source, piece, position, orientation) {
+                // no permitir mover las piezas blancas al lado negro
+                if (piece.search('w') !== -1 && orientation === 'black') return false;
+                // no permitir mover las piezas negras al lado blanco
+                if (piece.search('b') !== -1 && orientation === 'white') return false;
+            }
+        });
+
+        // Función para mostrar el tablero al hacer clic en el botón
+        document.getElementById('loadBoard').onclick = function () {
+            document.getElementById('board').style.display = 'block';
+            board.start();
+        };
+    </script>
+</body>
+</html>
+
 
     }
 </script>
